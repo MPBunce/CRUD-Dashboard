@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import {useDispatch} from 'react-redux'
+import createCrud from '../../features/crudSlice'
 
 export default function CrudForm() {
 
@@ -11,23 +13,27 @@ export default function CrudForm() {
 
     const onSubmit = e => {
         e.preventDefault()
-        //dispatch()
+        //dispatch(createCrud({name, job, age}))
+
+        setName('')
+        setJob('')
+        setAge('')
     }
 
   return (
     <>
-        <div class="container-md">
+        <div className="container-md">
             <form onSubmit={onSubmit}>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input class="form-control" type="text" name='name' id="name" value={name} placeholder="Enter Name"/>
-                    <label for="exampleInputEmail1">Job</label>
-                    <input class="form-control" type="text" name='job' id="job" value={job} placeholder="Enter job"/>
-                    <label for="exampleInputPassword1">Age</label>
-                    <input class="form-control" type="number" name='age' id="age" value={age} placeholder="Enter Age"/>
+                <div className="form-group">
+                    <label >Name</label>
+                    <input className="form-control" type="text" name='name' id="name" value={name} placeholder="Enter Name" onChange={(e) => setName(e.target.value)}/>
+                    <label >Job</label>
+                    <input className="form-control" type="text" name='job' id="job" value={job} placeholder="Enter job" onChange={(e) => setJob(e.target.value)}/>
+                    <label >Age</label>
+                    <input className="form-control" type="number" name='age' id="age" value={age} placeholder="Enter Age" onChange={(e) => setAge(e.target.value)}/>
                 </div>
                 <br></br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     </>
