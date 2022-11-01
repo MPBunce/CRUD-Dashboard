@@ -26,10 +26,17 @@ export default class App extends Component {
   }
 
 
-  handleRead(){
-    console.log("read test")
+  createCrud = async () => {
+
   }
 
+  deleteCrud = async () => {
+    
+  }
+
+  editCrud = async () => {
+    
+  }
 
 
   render(){
@@ -38,11 +45,11 @@ export default class App extends Component {
         <div className="App">
           <div className="container">
 
-            <ReadCrud handleRead={this.handleRead}/>
+            <ReadCrud/>
             <br></br>
             <AddCrud/>
             <br></br>
-            <Table tableData={this.state}/>
+            <Table tableData={this.state.crud}/>
 
           </div> 
         </div>
