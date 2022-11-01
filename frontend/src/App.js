@@ -27,7 +27,9 @@ export default class App extends Component {
 
 
   createCrud = async () => {
-
+    api.create('/').then(res => {
+      
+    })
   }
 
   deleteCrud = async () => {

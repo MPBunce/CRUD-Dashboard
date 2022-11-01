@@ -24,7 +24,7 @@ const Table = (props) => {
 
                     <tr>
                     <th scope='row' colSpan={6} className='text-center'> 
-                    <button type="button" className="btn btn-secondary bg-success">READING CRUD PLEASE WAIT</button> 
+                    <button type="button" className="btn btn-secondary bg-success">READING CRUD TO ADD, PLEASE WAIT OR ADD SOME CRUD</button> 
                     </th>
                     </tr>
 
