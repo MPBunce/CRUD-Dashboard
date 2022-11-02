@@ -1,27 +1,22 @@
-import React, { useReducer } from 'react' 
+import React from 'react' 
 import { useState } from 'react';
 
 const AddCrud = () => {
 
-    const initialFormState = {fullName: '', job: '', age: ''}
+    const initialFormState = {fullName: "", job: "", age: ""}
 
     const [input, setInput] = useState(initialFormState)
 
 
-    const handleInputChange = (event) => {
-        const {fullName, job, age} = event.target
-
-        setInput({...input, fullName, job, age })
-
+    const handleChange = (event) => {
+        setInput({ ...input, [event.target.name]: event.target.value });
+        event.preventDefault();
+        console.log(input);
     }
 
-    const onSubmit = (input) => {
+    const onSubmit = (event) => {
 
-        const {fullName, job, age} = input
-        console.log(fullName)
-        console.log(job)
-        console.log(age)
-        setInput(initialFormState)
+        console.log(input)
 
     }   
     
@@ -34,15 +29,15 @@ const AddCrud = () => {
                 <div className="form-group">
 
                     <label>Full Name</label>
-                    <input type="string" className="form-control" placeholder="Enter your name" value={input.fullName} onChange={handleInputChange}/>
+                    <input type="string" className="form-control" name="fullName" placeholder="Enter your name" value={input.fullName} onChange={handleChange}/>
                     <br></br>
 
                     <label>Job</label>
-                    <input type="text" className="form-control" placeholder="Enter your job" value={input.job} onChange={handleInputChange}/>
+                    <input type="text" className="form-control" name="job" placeholder="Enter your job" value={input.job} onChange={handleChange}/>
                     <br></br>
 
                     <label>Age</label>
-                    <input type="number" className="form-control" placeholder="Enter your age" value={input.age} onChange={handleInputChange}/>
+                    <input type="number" className="form-control" name="age" placeholder="Enter your age" value={input.age} onChange={handleChange}/>
                     <br></br>
 
                 </div>
