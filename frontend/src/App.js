@@ -27,9 +27,12 @@ export default class App extends Component {
 
 
   createCrud = async () => {
-    api.create('/').then(res => {
-      
+    let res = await api.post('/', {
+      name: '',
+      job: '',
+      age:  ''
     })
+    console.log(res)
   }
 
   deleteCrud = async () => {
@@ -37,7 +40,7 @@ export default class App extends Component {
   }
 
   editCrud = async () => {
-    
+
   }
 
 
