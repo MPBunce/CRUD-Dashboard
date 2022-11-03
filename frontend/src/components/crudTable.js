@@ -1,9 +1,6 @@
 import React from 'react' 
 
-const Table = (props) => {
-    console.log(props.tableData)
-    console.log("test")
-
+const Table = ( {callDelete} ) => {
 
     return(
 
@@ -24,7 +21,13 @@ const Table = (props) => {
 
                     <tr>
                     <th scope='row' colSpan={6} className='text-center'> 
-                    <button type="button" className="btn btn-secondary bg-success">READING CRUD TO ADD, PLEASE WAIT OR ADD SOME CRUD</button> 
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <div type="button" className="bg">PLEASE ADD SOME CRUD</div> 
+                        <br></br>
+                        <br></br>
+                        <br></br>
                     </th>
                     </tr>
 
@@ -44,7 +47,7 @@ const Table = (props) => {
                         </td>
                         <td>
 
-                            <button type="button" className="btn btn-danger">DELETE CRUD</button>
+                            <button type="button" className="btn btn-danger" onClick={ () => callDelete() }>DELETE CRUD</button>
 
                         </td>
                     </tr>

@@ -1,7 +1,7 @@
 import React from 'react' 
 import { useState } from 'react';
 
-const AddCrud = () => {
+const AddCrud = ({ callback }) => {
 
     const initialFormState = {fullName: "", job: "", age: ""}
 
@@ -14,11 +14,7 @@ const AddCrud = () => {
         console.log(input);
     }
 
-    const onSubmit = (event) => {
 
-        console.log(input)
-
-    }   
     
 
     return (
@@ -46,7 +42,10 @@ const AddCrud = () => {
                 
             </form>
 
-            <button className="btn btn-primary" onClick={onSubmit}>ADD CRUD</button>
+            <button className="btn btn-primary" onClick={() =>{
+                callback(input)
+                setInput(initialFormState)
+            }}>ADD CRUD</button>
 
         </div>
 
