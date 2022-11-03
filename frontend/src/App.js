@@ -41,10 +41,11 @@ export default class App extends Component {
   }
 
   deleteCrud = async (crud) => {
-    
-    const id = crud.id
-    let res = await axios.delete(`/api/items/${id}`)
-    console.log(res)
+    console.log("delete")
+    console.log(crud)
+    // const id = crud.id
+    // let res = await axios.delete(`/api/items/${id}`)
+    // console.log(res)
   }
 
   editCrud = async () => {
@@ -62,7 +63,7 @@ export default class App extends Component {
             <br></br>
             <AddCrud callback={this.createCrud}/>
             <br></br>
-            <Table tableData={this.state.crud} callDelete={this.deleteCrud} callEdit={this.editCrud}/>
+            <Table tableData={this.state.crud} callDelete={this.deleteCrud} />
 
           </div> 
         </div>

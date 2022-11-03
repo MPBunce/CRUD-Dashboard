@@ -7,7 +7,7 @@ function ReadCrud({callback}) {
             <div className="container">
                 <a className="navbar-brand" href="/">CRUD APPLICATION</a>
 
-                <button className="btn btn-success" onClick={ () => callback()}>READ CRUD</button>
+                <button className="btn btn-success" onClick={ () => callback() }>READ CRUD</button>
 
             </div>
         </nav>

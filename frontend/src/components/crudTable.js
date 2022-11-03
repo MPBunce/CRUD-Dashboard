@@ -1,6 +1,9 @@
 import React from 'react' 
 
-const Table = ( {callDelete} ) => {
+const Table = (props, {callDelete}) => {
+    console.log(props.tableData)
+    console.log("test")
+
 
     return(
 
@@ -24,7 +27,7 @@ const Table = ( {callDelete} ) => {
                         <br></br>
                         <br></br>
                         <br></br>
-                        <div type="button" className="bg">PLEASE ADD SOME CRUD</div> 
+                        <div type="button" className="bg">PLEASE ADD SOME CRUD OR PRESS THE READ BUTTON UP TOP</div> 
                         <br></br>
                         <br></br>
                         <br></br>
@@ -47,7 +50,7 @@ const Table = ( {callDelete} ) => {
                         </td>
                         <td>
 
-                            <button type="button" className="btn btn-danger" onClick={ () => callDelete() }>DELETE CRUD</button>
+                            <button type="button" className="btn btn-danger" onClick={ () => callDelete()}>DELETE CRUD</button>
 
                         </td>
                     </tr>
