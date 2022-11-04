@@ -2,6 +2,7 @@ import React from "react";
 import AddCrud from "./components/addCrud";
 import Table from "./components/crudTable";
 import ReadCrud from "./components/readCrud";
+
 import axios from 'axios'
 import { Component } from "react";
 
@@ -12,8 +13,8 @@ export default class App extends Component {
     crud: []
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     axios.get('/api/items').then(res => {
       console.log(res.data)
@@ -40,20 +41,30 @@ export default class App extends Component {
 
   }
 
-  deleteCrud = async (crud) => {
+  deleteCrud = async (id) => {
+    
     console.log("delete")
-    console.log(crud)
-    // const id = crud.id
-    // let res = await axios.delete(`/api/items/${id}`)
-    // console.log(res)
+    let res = await axios.delete(`/api/items/${id}`)
+    console.log(res)
+
+    axios.get('/api/items').then(res => {
+      console.log(res.data)
+      this.setState({crud: res.data})
+    })
+
   }
 
-  editCrud = async () => {
+  editCrud = async (editMode) => {
+    console.log("edirt")
+    this.editMode = true
+    console.log(this.editMode)
 
   }
+
 
 
   render(){
+
     return (
       <>
         <div className="App">
@@ -63,13 +74,14 @@ export default class App extends Component {
             <br></br>
             <AddCrud callback={this.createCrud}/>
             <br></br>
-            <Table tableData={this.state.crud} callDelete={this.deleteCrud} />
+            <Table tableData={this.state.crud} callDelete={this.deleteCrud} callStartEdit={this.startEditCrud}/>
 
           </div> 
         </div>
       </>
 
     )
+
   }
 
 }
