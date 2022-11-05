@@ -2,24 +2,22 @@ import React from "react";
 import AddCrud from "./components/addCrud";
 import Table from "./components/crudTable";
 import ReadCrud from "./components/readCrud";
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import { Component } from "react";
+import EditForm from './components/editForm'
+import { Component, useState } from "react";
 
 
 export default class App extends Component {
 
-  state = {
-    crud: []
-  }
-
   constructor(props) {
     super(props);
 
-    axios.get('/api/items').then(res => {
-      console.log(res.data)
-      this.setState({crud: res.data})
-    })
+    this.state = {
+      crud: [],
+      editData: [],
+      mode: false
+    }
 
   }
 
@@ -30,7 +28,6 @@ export default class App extends Component {
     })
   }
 
-
   createCrud = async (crud) => {
 
     const theName = crud.fullName
@@ -38,7 +35,7 @@ export default class App extends Component {
     const theAge = crud.age
 
     let res = await axios.post('/api/items', {name: theName, job: theJob, age: theAge})
-
+    console.log(res)
   }
 
   deleteCrud = async (id) => {
@@ -54,14 +51,36 @@ export default class App extends Component {
 
   }
 
-  editCrud = async (editMode) => {
-    console.log("edirt")
-    this.editMode = true
-    console.log(this.editMode)
+  startEditCrud = async (id, name, job, age, ) => {
+
+    console.log("starting edit")   
+    const crud = {id, name, job, age}
+    console.log(crud.id)
+    this.setState({mode: true})
+    this.setState({editData: crud})
 
   }
 
+  finishEditCrud = async (id, crud) => {
+    
+    console.log("done edit")
+    const editName = crud.fullName
+    const editJob = crud.job
+    const editAge = crud.age
 
+    let res = await axios.put(`/api/items/${id}`, {name: editName, job: editJob, age: editAge})
+    console.log(res)
+    axios.get('/api/items').then(res => {
+      console.log(res.data)
+      this.setState({crud: res.data})
+    })
+    this.setState({mode: false})
+
+  }
+
+  cancelEdit = () => {
+    this.setState({mode: false})
+  }
 
   render(){
 
@@ -71,8 +90,17 @@ export default class App extends Component {
           <div className="container">
 
             <ReadCrud callback={this.readCrud}/>
+
             <br></br>
-            <AddCrud callback={this.createCrud}/>
+
+            {
+              this.state.mode === true 
+              ? 
+              <EditForm callbackCancel={this.cancelEdit} callBackEdit={this.finishEditCrud} editCrud={this.state.editData}/> 
+              : 
+              <AddCrud callback={this.createCrud}/>
+            }
+            
             <br></br>
             <Table tableData={this.state.crud} callDelete={this.deleteCrud} callStartEdit={this.startEditCrud}/>
 

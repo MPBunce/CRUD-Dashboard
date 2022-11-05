@@ -1,10 +1,8 @@
-import React, { useState } from 'react' 
+import React from 'react' 
 
 const Table = (props) => {
     console.log(props.tableData)
     console.log("test")
-
-    const [editState, setEditState] = useState(false)
 
     return(
         <>
@@ -39,14 +37,17 @@ const Table = (props) => {
 
                         props.tableData.map( (element) => 
                         
+
                         <tr key={element._id}>
                             <th scope="row">{element._id}</th>
                             <td>{element.name}</td>
                             <td>{element.job}</td>
                             <td>{element.age}</td>
+
+
                             <td>
 
-                                <button type="button" className="btn btn-warning" data-toggle="modal" data-target="editForm" onClick={ ()=> props.callStartEdit()}>EDIT CRUD</button>    
+                                <button type="button" className="btn btn-warning" data-toggle="modal" data-target="editForm" onClick={ ()=> props.callStartEdit(element._id, element.name, element.job, element.age)}>EDIT CRUD</button>    
 
                             </td>
                             <td>
@@ -55,16 +56,17 @@ const Table = (props) => {
 
                             </td>
 
-
-
-
                         </tr>
 
-                    ) }
+                    
+                       
 
+                    ) }
+   
                 </tbody>
             </table>
 
+            
         </>
     );
 }

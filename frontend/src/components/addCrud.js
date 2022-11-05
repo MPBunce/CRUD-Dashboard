@@ -15,8 +15,6 @@ const AddCrud = ({ callback }) => {
     }
 
 
-    
-
     return (
 
         <div>
