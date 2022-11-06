@@ -5,7 +5,7 @@ import ReadCrud from "./components/readCrud";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import EditForm from './components/editForm'
-import { Component, useState } from "react";
+import { Component } from "react";
 
 
 export default class App extends Component {
