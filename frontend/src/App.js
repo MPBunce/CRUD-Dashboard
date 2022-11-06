@@ -99,6 +99,7 @@ export default class App extends Component {
               <EditForm callbackCancel={this.cancelEdit} callBackEdit={this.finishEditCrud} editCrud={this.state.editData}/> 
               : 
               <AddCrud callback={this.createCrud}/>
+
             }
             
             <br></br>
